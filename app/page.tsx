@@ -219,22 +219,22 @@ function PlaceCard({ place }: { place: Place }) {
   const hasSlider = images.length > 1;
 
   return (
-    <article className="rounded-[1.4rem] border border-[color:var(--border)] bg-white/80 p-5 transition-transform duration-300 hover:-translate-y-0.5">
+    <article className="rounded-[1.15rem] border border-[color:var(--border)] bg-white/80 p-4 transition-transform duration-300 sm:rounded-[1.4rem] sm:p-5 hover:-translate-y-0.5">
       {hasImages ? (
-        <div className="mb-4 overflow-hidden rounded-[1.1rem] border border-[color:var(--border)] bg-[#f4ede2]">
+        <div className="mb-4 overflow-hidden rounded-[0.95rem] border border-[color:var(--border)] bg-[#f4ede2] sm:rounded-[1.1rem]">
           <div className="relative aspect-[4/3]">
             <Image
               src={images[activeImage]}
               alt={place.title}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 92vw, 50vw"
               className="object-cover"
             />
           </div>
 
           {hasSlider ? (
-            <div className="flex items-center justify-between gap-3 border-t border-[color:var(--border)] bg-white/90 px-3 py-2">
-              <div className="flex gap-1.5">
+            <div className="flex flex-col gap-2 border-t border-[color:var(--border)] bg-white/90 px-3 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+              <div className="flex justify-center gap-1.5 sm:justify-start">
                 {images.map((image, index) => (
                   <button
                     key={image}
@@ -249,7 +249,7 @@ function PlaceCard({ place }: { place: Place }) {
                   />
                 ))}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-between gap-2 sm:justify-end">
                 <button
                   type="button"
                   aria-label={`Попереднє фото: ${place.title}`}
@@ -258,7 +258,7 @@ function PlaceCard({ place }: { place: Place }) {
                       current === 0 ? images.length - 1 : current - 1,
                     )
                   }
-                  className="rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)] transition-colors hover:bg-[color:var(--accent-soft)]"
+                  className="min-h-9 rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)] transition-colors hover:bg-[color:var(--accent-soft)]"
                 >
                   Назад
                 </button>
@@ -273,7 +273,7 @@ function PlaceCard({ place }: { place: Place }) {
                       current === images.length - 1 ? 0 : current + 1,
                     )
                   }
-                  className="rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)] transition-colors hover:bg-[color:var(--accent-soft)]"
+                  className="min-h-9 rounded-full border border-[color:var(--border)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)] transition-colors hover:bg-[color:var(--accent-soft)]"
                 >
                   Далі
                 </button>
@@ -283,10 +283,10 @@ function PlaceCard({ place }: { place: Place }) {
         </div>
       ) : null}
 
-      <h3 className="mb-3 text-lg font-semibold text-[color:var(--foreground)]">
+      <h3 className="mb-3 text-base font-semibold text-[color:var(--foreground)] sm:text-lg">
         {place.title}
       </h3>
-      <p className="text-sm leading-7 text-[color:var(--muted)] sm:text-[0.95rem]">
+      <p className="text-sm leading-6 text-[color:var(--muted)] sm:text-[0.95rem] sm:leading-7">
         {place.description}
       </p>
     </article>
@@ -299,28 +299,28 @@ export default function Home() {
 
   const isBatumi = activeTab === "batumi";
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-8 sm:px-8 lg:px-12">
-      <section className="relative overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface)] px-6 py-8 shadow-[0_20px_70px_rgba(100,76,48,0.08)] backdrop-blur sm:px-10 sm:py-10">
-        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-r from-white/70 via-[#f8d7be]/40 to-white/60" />
-        <div className="relative flex flex-col gap-8">
+    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-3 py-4 sm:px-8 sm:py-8 lg:px-12">
+      <section className="relative overflow-hidden rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-6 shadow-[0_20px_70px_rgba(100,76,48,0.08)] backdrop-blur sm:rounded-[2rem] sm:px-10 sm:py-10">
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-white/70 via-[#f8d7be]/40 to-white/60 sm:h-28" />
+        <div className="relative flex flex-col gap-6 sm:gap-8">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-[color:var(--muted)]">
+              <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-[color:var(--muted)] sm:text-xs sm:tracking-[0.32em]">
                 Сімейний гід Грузією
               </p>
-              <h1 className="font-serif text-5xl leading-none text-[color:var(--foreground)] sm:text-6xl">
+              <h1 className="font-serif text-[2.2rem] leading-[0.95] text-[color:var(--foreground)] sm:text-6xl">
                 Дві подорожі,
                 <br />
                 два настрої
               </h1>
             </div>
-            <p className="max-w-xl text-sm leading-7 text-[color:var(--muted)] sm:text-base">
+            <p className="max-w-xl text-sm leading-6 text-[color:var(--muted)] sm:text-base sm:leading-7">
               Починаємо з Батумі: спокійні прогулянки, трохи природи, місця для
               сімейних зупинок і пляжі, куди приємно виїхати без поспіху.
             </p>
           </div>
 
-          <div className="flex w-full max-w-md rounded-full border border-[color:var(--border)] bg-white/80 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
+          <div className="flex w-full rounded-full border border-[color:var(--border)] bg-white/80 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] sm:max-w-md">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
 
@@ -329,7 +329,7 @@ export default function Home() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 rounded-full px-4 py-3 text-sm font-semibold transition-all sm:text-base ${
+                  className={`min-h-11 flex-1 rounded-full px-3 py-2.5 text-sm font-semibold transition-all sm:px-4 sm:py-3 sm:text-base ${
                     isActive
                       ? "bg-[color:var(--foreground)] text-white shadow-[0_12px_30px_rgba(44,36,29,0.18)]"
                       : "text-[color:var(--muted)] hover:bg-[color:var(--accent-soft)]"
@@ -344,20 +344,20 @@ export default function Home() {
       </section>
 
       {isBatumi ? (
-        <section className="mt-8 grid gap-6">
+        <section className="mt-5 grid gap-4 sm:mt-8 sm:gap-6">
           {batumiSections.map((section) => (
             <div
               key={section.title}
-              className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-6 shadow-[0_14px_50px_rgba(100,76,48,0.06)] sm:p-8"
+              className="rounded-[1.35rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-4 shadow-[0_14px_50px_rgba(100,76,48,0.06)] sm:rounded-[1.75rem] sm:p-8"
             >
-              <div className="mb-6 flex items-center justify-between gap-4">
-                <h2 className="font-serif text-3xl text-[color:var(--foreground)] sm:text-4xl">
+              <div className="mb-5 flex items-center justify-between gap-4 sm:mb-6">
+                <h2 className="font-serif text-[2rem] leading-none text-[color:var(--foreground)] sm:text-4xl">
                   {section.title}
                 </h2>
                 <div className="hidden h-px flex-1 bg-[linear-gradient(90deg,rgba(217,143,92,0.32),transparent)] sm:block" />
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
                 {section.items.map((item) => (
                   <PlaceCard key={item.title} place={item} />
                 ))}
@@ -383,50 +383,50 @@ export default function Home() {
             </div>
           ))}
 
-          <div className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-6 shadow-[0_14px_50px_rgba(100,76,48,0.06)] sm:p-8">
-            <div className="mb-6 flex items-center justify-between gap-4">
-              <h2 className="font-serif text-3xl text-[color:var(--foreground)] sm:text-4xl">
+          <div className="rounded-[1.35rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-4 shadow-[0_14px_50px_rgba(100,76,48,0.06)] sm:rounded-[1.75rem] sm:p-8">
+            <div className="mb-5 flex items-center justify-between gap-4 sm:mb-6">
+              <h2 className="font-serif text-[2rem] leading-none text-[color:var(--foreground)] sm:text-4xl">
                 {batumiMap.title}
               </h2>
               <div className="hidden h-px flex-1 bg-[linear-gradient(90deg,rgba(217,143,92,0.32),transparent)] sm:block" />
             </div>
 
-            <div className="overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-white/80">
+            <div className="overflow-hidden rounded-[1rem] border border-[color:var(--border)] bg-white/80 sm:rounded-[1.4rem]">
               <iframe
                 src={batumiMap.src}
                 title={batumiMap.title}
                 width="100%"
-                height="420"
+                height="320"
                 loading="lazy"
-                className="block border-0"
+                className="block h-[320px] border-0 sm:h-[420px]"
               />
             </div>
           </div>
         </section>
       ) : (
-        <section className="mt-8 grid gap-6">
+        <section className="mt-5 grid gap-4 sm:mt-8 sm:gap-6">
           {mestiaSections.map((section) => (
             <div
               key={section.title}
-              className="rounded-[1.75rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-6 shadow-[0_14px_50px_rgba(100,76,48,0.06)] sm:p-8"
+              className="rounded-[1.35rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-4 shadow-[0_14px_50px_rgba(100,76,48,0.06)] sm:rounded-[1.75rem] sm:p-8"
             >
-              <div className="mb-6 flex items-center justify-between gap-4">
-                <h2 className="font-serif text-3xl text-[color:var(--foreground)] sm:text-4xl">
+              <div className="mb-5 flex items-center justify-between gap-4 sm:mb-6">
+                <h2 className="font-serif text-[2rem] leading-none text-[color:var(--foreground)] sm:text-4xl">
                   {section.title}
                 </h2>
                 <div className="hidden h-px flex-1 bg-[linear-gradient(90deg,rgba(217,143,92,0.32),transparent)] sm:block" />
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
                 {section.items.map((item) => (
                   <PlaceCard key={item.title} place={item} />
                 ))}
               </div>
 
               {section.map ? (
-                <div className="mt-6 overflow-hidden rounded-[1.4rem] border border-[color:var(--border)] bg-white/80">
-                  <div className="border-b border-[color:var(--border)] px-5 py-3">
-                    <h3 className="text-base font-semibold text-[color:var(--foreground)]">
+                <div className="mt-5 overflow-hidden rounded-[1rem] border border-[color:var(--border)] bg-white/80 sm:mt-6 sm:rounded-[1.4rem]">
+                  <div className="border-b border-[color:var(--border)] px-4 py-3 sm:px-5">
+                    <h3 className="text-sm font-semibold text-[color:var(--foreground)] sm:text-base">
                       {section.map.title}
                     </h3>
                   </div>
@@ -434,9 +434,9 @@ export default function Home() {
                     src={section.map.src}
                     title={section.map.title}
                     width="100%"
-                    height="420"
+                    height="320"
                     loading="lazy"
-                    className="block border-0"
+                    className="block h-[320px] border-0 sm:h-[420px]"
                   />
                 </div>
               ) : null}
